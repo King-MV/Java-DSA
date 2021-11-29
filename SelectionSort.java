@@ -5,6 +5,7 @@ public class SelectionSort {
         System.out.println(java.util.Arrays.toString(select(num)));
     }
 
+// Function used to find the maximum element in an array.
     static int findMax(int[] num, int start, int last) {
         int max = start;
         for (int index=start; index<=last; index++) {
@@ -14,14 +15,16 @@ public class SelectionSort {
         }
         return max;
     }
-
+    
+    // Swapping function is used here.    
     static int swap (int[] num, int mxin, int last) { 
         int temp = num[mxin];
         num[mxin] = num[last];
         num[last] = temp;
         return temp;
     }
-
+    
+    // Selection sort is used here.    
     static int[] select(int[] num) {
         for (int i=0; i<num.length; i++) {
             int last = num.length-i-1;
