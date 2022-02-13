@@ -22,7 +22,7 @@ struct ListNode* deleteDuplicates(struct ListNode* head){
         temp1 = temp1->next;
     }
     return head;
-}
+} 
 
 // Runtime: 16 ms, faster than 5.83%
 // Memory Usage: 6.6 MB, less than 14.39%
