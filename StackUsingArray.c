@@ -15,24 +15,35 @@ void push(int item) {
 void pop() {
     if(top == -1) {
         printf("\n\t**Stack Underflow**\n");
-    } else {
-        top--;
-        printf("\n\t**%d deleted successfully**\n",array[top+1]);
-    }
+        return;
+    } 
+    top--;
+    printf("\n\t**%d deleted successfully**\n",array[top+1]);
 }
 
 void Top() {
     if (top == -1) {
         printf("\n\t**Stack Underflow**\n");
-    } else {
-        printf("\n\t**Top Element: %d**\n",array[top]);
+        return;
+    }
+    printf("\n\t**Top Element: %d**\n",array[top]);
+}
+
+void print() {
+    printf("\nStack: ");
+    if (top == -1) {
+        printf("Empty");
+        return;
+    }
+    for (int i=0; i<=top; i++) {
+        printf("%d ",array[i]);
     }
 }
 
 void main() {
     int choice, item;
     while(1) {
-        printf("\n\t\t**MENU**\n\t1. Insert an element\n\t\2. Delete an element\n\t3. Find top element\n\t4. Exit\n");
+        printf("\n\t\t**MENU**\n\t1. Insert an element\n\t\2. Delete an element\n\t3. Find top element\n\t4. View Stack\n\t5. Exit\n");
 
         printf("Enter your choice: ");
         scanf("%d",&choice);
@@ -50,8 +61,10 @@ void main() {
                 Top();
                 break;
             case 4:
-                exit(0);
+                print();
                 break;
+            case 5:
+                exit(0);
             default:
                 printf("\n\t**Enter a valid choice**\n");
         }
