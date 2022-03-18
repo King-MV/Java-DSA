@@ -1,3 +1,8 @@
+// A C program to Insert, Delete, Search, Find length & Display elements using linked list.
+// Every node of linked list has three parameters:
+//     1. Data
+//     2. Address of next node
+//     3. key of the node
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,16 +17,17 @@ struct Node *CreateNode() {
     return new;
 }
 
+// Insert and sort elements in ascending order as per the value of key. 
 void Insert_Update(int k, int item) {
     node *temp = head;
     node *NewNode = CreateNode();
     NewNode->value = item;
     NewNode->key = k;
-    if(temp == NULL || temp->key > k) {
+    if(temp == NULL || temp->key > k) { /*Insertion at head*/
         NewNode->next = head;
         head = NewNode;
     } else {
-        while(temp->next != NULL && temp->next->key < k) {
+        while(temp->next != NULL && temp->next->key < k) { /*Insertion at end or in between*/
             temp =temp->next;
         }
         NewNode->next = temp->next;
@@ -29,24 +35,25 @@ void Insert_Update(int k, int item) {
     }
 }
 
+// Takes input of key user wants to delete and deletes it.
 int Delete(int k) {
     node *temp = head;
     node *temp2 = temp->next;
     while(temp!=NULL) {
-        if(k == head->key) {
+        if(k == head->key) { /*Deletion at head*/
             head = head->next;
             return 0;
-        } else if(temp->next->key == k) {
-            temp2->next = temp2->next->next;
+        } else if(temp2->key == k) { /*Deletion in between*/
+            temp->next = temp2->next;
             return 0;
             free(temp2);
-            if(temp->next->next == NULL) {
+        } else if(temp2->next->key == k && temp2->next == NULL) { /*Deletion at end*/
                 temp->next = NULL;
                 return 0;
-                free(temp->next);
-            }
+                free(temp2);
         }
         temp = temp->next;
+        temp2 = temp2->next;
     }
     return -1;
 }
